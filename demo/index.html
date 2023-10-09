@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
@@ -9,21 +9,21 @@
   </style>
 </head>
 <body>
-  <div id="demo"></div>
+  <card-test></card-test>
 
   <script type="module">
-    import { html, render } from 'lit';
-    import '../card-test.js';
+    document.querySelector('button').addEventListener('click', (e) => {
+      const cardClone = document.querySelector('.card').cloneNode(true);
+      document.body.appendChild(cardClone);
+    });
 
-    const header = 'Hello owc World!';
-    render(
-      html`
-        <card-test .header=${header}>
-          some light-dom
-        </card-test>
-      `,
-      document.querySelector('#demo')
-    );
+    document.querySelector('#backgroundColor').addEventListener('click', () => {
+      const card = document.querySelector('.card');
+      card.classList.toggle('light-mode');
+      card.classList.toggle('dark-mode');
+    });
+
+    // More event listeners and logic as needed
   </script>
 </body>
 </html>
